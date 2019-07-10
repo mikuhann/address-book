@@ -5,6 +5,9 @@ const app = express();
 
 connectDB();
 
+// body parser
+app.use(express.json({ extended: false }));
+
 app.get('/', (req, res) => res.json({msg: 'Address book API'}));
 
 app.use('/api/users', require('./routes/users'));
