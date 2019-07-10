@@ -1,8 +1,11 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const {check, validationResult} = require('express-validator');
-const router = express.Router();
 const asyncMiddleware = require('../utils/asyncMiddleware');
+const jwt = require('jsonwebtoken');
+const config = require('config');
+const router = express.Router();
+
 
 const User = require('../models/User');
 
@@ -32,7 +35,18 @@ router.post('/', [
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(password, salt);
   await user.save();
-  res.send('User saved');
+  const payload = {
+    user: {
+      id: user.id
+    }
+  };
+  const jwtSecret = config.get('jwtSecret');
+  const jwtOptions = {
+    expiresIn: 3600
+  };
+  jwt.sign(payload, jwtSecret, jwtOptions, (err, token) => {
+    if (err) throw err;
+    res.json({token});
+  });
 }));
-
 module.exports = router;
