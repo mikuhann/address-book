@@ -13,8 +13,9 @@ const User = require('../models/User');
 // @desc    Get logged in user
 // @access  Private
 
-router.get('/', authMiddleware, asyncMiddleware(async (req, res) => {
-  res.send('private route');
+router.get('/', authMiddleware, asyncMiddleware(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select('-password');
+  res.json(user);
 }));
 
 // @route   POST /api/auth
