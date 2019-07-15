@@ -222,6 +222,9 @@ img {
   color: #333;
   border-radius: 5px;
 }
+.badge-right {
+  float: right;
+}
 
 .alert {
   padding: 0.7rem;
