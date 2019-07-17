@@ -83,7 +83,10 @@ const ContactForm = () => {
         checked={type === "professional"}
         onChange={onChange}/>
       <div>
-        <input type="submit" value={current ? 'Update contact' : 'Add contact'} className="btn btn-primary btn-block"/>
+        <input
+          type="submit"
+          value={current ? 'Update contact' : 'Add contact'}
+          className="btn btn-primary btn-block"/>
       </div>
       {current && <div>
         <button
