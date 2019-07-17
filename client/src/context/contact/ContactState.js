@@ -88,9 +88,9 @@ const ContactState = (props) => {
   return (
     <ContactContext.Provider
       value={{
-        contacts: contacts,
-        current: current,
-        filter: filter,
+        contacts,
+        current,
+        filter,
         addContact,
         deleteContact,
         setCurrentContact,
