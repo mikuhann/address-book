@@ -19,7 +19,7 @@ router.get('/', authMiddleware, asyncMiddleware(async (req, res, next) => {
 }));
 
 // @route   POST /api/auth
-// @desc    Auth user and get token back
+// @desc    auth user and get token back
 // @access  Public
 
 router.post('/', [
