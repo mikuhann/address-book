@@ -12,16 +12,6 @@ const Navbar = ({title, icon}) => {
       </Link>
       <ul>
         <li>
-          <Link to="/">
-            <i className="fas fa-home"/>{' '}Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/about">
-            <i className="fas fa-question-circle"/>{' '}About
-          </Link>
-        </li>
-        <li>
           <Link to="/register">
             <i className="fas fa-user-plus"/>{' '}Register
           </Link>
@@ -29,6 +19,16 @@ const Navbar = ({title, icon}) => {
         <li>
           <Link to="/login">
             <i className="fas fa-sign-in-alt"/>{' '}Login
+          </Link>
+        </li>
+        <li>
+          <Link to="/">
+            <i className="fas fa-home"/>{' '}Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/about">
+            <i className="fas fa-question-circle"/>{' '}About
           </Link>
         </li>
       </ul>
