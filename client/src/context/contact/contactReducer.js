@@ -24,13 +24,13 @@ export default (state, action) => {
     case ADD_CONTACT:
       return {
         ...state,
-        contacts: [...contacts, payload],
+        contacts: [payload, ...contacts],
         loading: false
       };
     case DELETE_CONTACT:
       return {
         ...state,
-        contacts: contacts.filter((contact) => contact.id !== payload),
+        contacts: contacts.filter((contact) => contact._id !== payload),
         loading: false
       };
     case SET_CURRENT:
