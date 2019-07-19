@@ -6,22 +6,32 @@ import {
   UPDATE_CONTACT,
   FILTER_CONTACTS,
   CLEAR_FILTER,
-  CONTACT_ERROR
+  CONTACT_ERROR,
+  GET_CONTACTS,
+  CLEAR_CONTACTS
 } from "../Constants";
 
 export default (state, action) => {
   const {type, payload} = action;
   const {contacts} = state;
   switch (type) {
+    case GET_CONTACTS:
+      return {
+        ...state,
+        contacts: payload,
+        loading: false
+      };
     case ADD_CONTACT:
       return {
         ...state,
-        contacts: [...contacts, payload]
+        contacts: [...contacts, payload],
+        loading: false
       };
     case DELETE_CONTACT:
       return {
         ...state,
-        contacts: contacts.filter((contact) => contact.id !== payload)
+        contacts: contacts.filter((contact) => contact.id !== payload),
+        loading: false
       };
     case SET_CURRENT:
       return {
@@ -36,7 +46,16 @@ export default (state, action) => {
     case UPDATE_CONTACT:
       return {
         ...state,
-        contacts: contacts.map((contact) => contact.id === payload.id ? payload : contact)
+        contacts: contacts.map((contact) => contact.id === payload.id ? payload : contact),
+        loading: false
+      };
+    case CLEAR_CONTACTS:
+      return {
+        ...state,
+        contacts: null,
+        filter: null,
+        error: null,
+        current: null
       };
     case FILTER_CONTACTS:
       return {
